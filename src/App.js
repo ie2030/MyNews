@@ -15,18 +15,36 @@
     //       }
     //    });
 
+var News = React.createClass({
+  render: function() {
+    return (
+      <div className="news">
+       No news so far!!!
+      </div>
+    );
+  }
+});
 
-        // TODO (missing component)
+var Comments = React.createClass({
+  render: function() {
+    return (
+      <div className="comments">
+        Нет новостей - комментировать нечего
+      </div>
+    );
+  }
+});
 
-   var NewsApp = React.createClass({
+  var NewsApp = React.createClass({
   render: function() {
     return (
       <div className="app">
         Hello Iam component News App and can display news!!!!
-        
+        <News />
+        <Comments />
       </div>
     );
   }
 });
   
-  export default NewsApp;
+export default NewsApp;
