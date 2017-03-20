@@ -17,8 +17,12 @@
 
 var News = React.createClass({
   render: function() {
+
     var data = this.props.data;
-    var newsTemplate = data.map(function(item, index) {
+    var newsTemplate;
+
+    if (data.length > 0) {
+    newsTemplate = data.map(function(item, index) {
       return (
         <div key={index}>
           <p className="news__author">{item.author}:</p>
@@ -26,11 +30,15 @@ var News = React.createClass({
           <p className="news_bigText">{item.bigText}</p>
         </div>
       )
-    })
+  })
+} else {
+  newsTemplate = <p>No news</p>
+}
 
     return (
       <div className="news">
         {newsTemplate}
+        <strong>Total news: {data.length}</strong>
       </div>
     );
   }
@@ -39,8 +47,7 @@ var News = React.createClass({
 var Comments = React.createClass({
   render: function() {
     return (
-      <div className="comments">
-        Нет новостей - комментировать нечего
+      <div className="comments">       
       </div>
     );
   }
@@ -50,7 +57,6 @@ var App = React.createClass({
   render: function() {
     return (
       <div className="app">
-        Всем привет, я компонент App! Я умею отображать новости.
         <News data={this.props.my_news} />
         <Comments />
       </div>
