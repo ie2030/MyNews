@@ -1,5 +1,7 @@
   import React from 'react';
 
+
+
     // var SelectBox = React.createClass({
     //   render: function(){
     //        return (
@@ -29,7 +31,7 @@ var Comments = React.createClass({
   render: function() {
     return (
       <div className="comments">
-        Нет новостей - комментировать нечего
+        Not new - not comments
       </div>
     );
   }
@@ -39,8 +41,8 @@ var Comments = React.createClass({
   render: function() {
     return (
       <div className="app">
-        Hello Iam component News App and can display news!!!!
-        <News />
+        Hello!!! I am component News App and can display news!!!!
+        <News   />
         <Comments />
       </div>
     );
