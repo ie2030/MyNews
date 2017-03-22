@@ -18,11 +18,19 @@
 
 
     var Article = React.createClass({
-      render:function(){
+      
+      propTypes: {
+      data: React.PropTypes.shape({
+        author: React.PropTypes.string.isRequired,
+        text: React.PropTypes.string.isRequired
+      })
+     },
+
+     render:function(){
     var author = this.props.data.author,  //  added immutable data  = added props in render 
     text = this.props.data.text,
     bigText = this.props.data.bigText;
-    
+
     return(
       <div className='article'>
       <p className='news__author'>{author}:</p>
@@ -71,7 +79,7 @@
         return (
         <div className="app">
         <h3>News</h3>
-      <News />  {/* added data attributes in components*/}
+      <News data = {this.props.my_news}/>  {/* added data attributes in components*/}
       </div>
       );
     }
