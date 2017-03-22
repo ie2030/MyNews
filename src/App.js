@@ -17,11 +17,12 @@
 
 
 
-var Article = React.createClass({
-  render:function(){
+    var Article = React.createClass({
+      render:function(){
     var author = this.props.data.author,  //  added immutable data  = added props in render 
     text = this.props.data.text,
     bigText = this.props.data.bigText;
+    
     return(
       <div className='article'>
       <p className='news__author'>{author}:</p>
@@ -32,44 +33,47 @@ var Article = React.createClass({
   }
 });
 
-var News = React.createClass({
-  render:function(){
-    var data = this.props.data;
-    var newsTemplate;
+    var News = React.createClass({
+      propTypes: {
+        data: React.PropTypes.array.isRequired
+      },
 
-    if (data.length > 0) {
-    newsTemplate = data.map(function(item, index) { 
+      render:function(){
+        var data = this.props.data;
+        var newsTemplate;
+
+        if (data.length > 0) {
+          newsTemplate = data.map(function(item, index) { 
     // Array method map = created new array and dispaly elements. 
     //Save array in var newsTemplate 
     return (
-        <div key={index}>                             
-          <Article data={item} />
-        </div>
+      <div key={index}>                             
+      <Article data={item} />
+      </div>
       )
   })
-} else {
-  newsTemplate = <p>No news</p>
-}
+        } else {
+          newsTemplate = <p>No news</p>
+        }
 
-    return (
-      <div className="news"> 
+        return (
+        <div className="news"> 
         {newsTemplate}
-       <strong className={'news__count ' + (data.length > 0 ? '':'none') }>Total news: {data.length}</strong>
-      </div>
-    );
-  }
-});
+        <strong className={'news__count ' + (data.length > 0 ? '':'none') }>Total news: {data.length}</strong>
+        </div>
+        );
+      }
+    });
 
 
-var App = React.createClass({
-  render: function() {
-    return (
-      <div className="app">
-      <h3>News</h3>
-        <News />  {/* added data attributes in components*/}
+    var App = React.createClass({
+      render: function() {
+        return (
+        <div className="app">
+        <h3>News</h3>
+      <News />  {/* added data attributes in components*/}
       </div>
-    );
-  }
-});
-  
-export default App;
+      );
+    }
+  });
+  export default App;
