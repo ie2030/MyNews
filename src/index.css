@@ -2,7 +2,7 @@ body {
 margin: 2;
 padding: 2;
 font-family: sans-serif;	
-background-color: lightblue;
+background-color: gray;
 }
 
 .none {
@@ -10,15 +10,15 @@ display: none !important;
 }
 
 p { m
-argin: 0 0 5px;
+margin: 0 0 5px;
 } 
 
 .article {
 background: #FFF;
 border: 1px solid rgba(0, 89, 181, 0.82);
-width: 600px;
+width: 900px;
 margin: 0 0 5px;
-box-shadow: 2px 2px 5px -1px rgb(0, 81, 202);
+box-shadow: 2px 2px 50px -1px rgb(0, 81, 202);
 padding: 3px 5px;
 } 
 

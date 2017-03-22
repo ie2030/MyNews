@@ -66,7 +66,7 @@ var App = React.createClass({
     return (
       <div className="app">
       <h3>News</h3>
-        <News data={this.props.my_news} />  // added data attributes in components
+        <News />  {/* added data attributes in components*/}
       </div>
     );
   }
