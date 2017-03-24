@@ -33,8 +33,8 @@
         };
       },
 
-      readmoreClick: function(e) {
-        e.preventDefault();
+      readmoreClick: function(event) {
+        event.preventDefault();
         this.setState({visible: true});
       },
 
@@ -48,11 +48,15 @@
       <div className='article'>
       <p className='news__author'>{author}:</p>
       <p className='news__text'>{text}:</p>
-    <a href="#" onClick={this.readmoreClick} className={'news__readmore ' + (visible ? 'none': '')}>Details</a> {/*for readmore link if visible === true do not show link*/}
-    <p className={'news__bigText ' + (visible ? '': 'none')}>{bigText}</p>
-    </div>
-    )
-  }
+
+    {/*for readmore link if visible === true do not show link*/}
+    <a href="#" onClick={this.readmoreClick} className={'news__readmore ' + (visible ? 'none': '')}>Details</a>   
+
+  {/*for big text: do not show text if visible === false*/}
+  <p className={'news__bigText ' + (visible ? '' : 'none')}>{bigText}</p> 
+  </div>
+  )
+}
 });
 
 var News = React.createClass({
@@ -60,14 +64,22 @@ var News = React.createClass({
     data: React.PropTypes.array.isRequired
   },
 
+
+  onTotalNewsClick: function(){
+    this.setState({counter: ++this.state.counter });
+  },
+  
+
   render:function(){
     var data = this.props.data;
     var newsTemplate;
 
     if (data.length > 0) {
       newsTemplate = data.map(function(item, index) { 
+
         // Array method map = created new array and dispaly elements. 
         //Save array in var newsTemplate 
+
         return (
         <div key={index}>                             
         <Article data={item} />
@@ -81,11 +93,24 @@ var News = React.createClass({
     return (
     <div className="news"> 
     {newsTemplate}
-    <strong className={'news__count ' + (data.length > 0 ? '':'none') }>Total news: {data.length}</strong>
+    <strong className={'news__count ' + (data.length > 0 ? '':'none')}>Total news: {data.length}</strong>
     </div>
     );
   }
 });
+
+var TextInput = React.createClass({
+  render: function(){
+    return(
+
+    <input className='test-input' value='enter value' />
+
+    );
+
+  }
+
+});
+
 
 
 var App = React.createClass({
