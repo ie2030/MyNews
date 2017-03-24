@@ -53,7 +53,7 @@
     <a href="#" onClick={this.readmoreClick} className={'news__readmore ' + (visible ? 'none': '')}>Details</a>   
 
   {/*for big text: do not show text if visible === false*/}
-  <p className={'news__bigText ' + (visible ? '' : 'none')}>{bigText}</p> 
+  <p className={'news__bigText ' + (visible ? '' : 'none')}>{bigText}</p>  
   </div>
   )
 }
@@ -100,27 +100,36 @@ var News = React.createClass({
 });
 
 var TextInput = React.createClass({
+  getInitialState: function() {
+    return {
+        myValue: ''
+    };
+  },
+
+  onChangeHandler: function(event){
+    this.setState({myValue: event.target.value})
+  },
+
   render: function(){
     return(
-
-    <input className='test-input' value='enter value' />
-
+    <input className='textInput' value={this.state.myValue} onChange={this.onChangeHandler}
+    placeholder = 'enter value' />
+ 
     );
-
   }
-
 });
-
-
 
 var App = React.createClass({
   render: function() {
     return (
     <div className="app">
     <h3>News</h3>
-  <News data = {this.props.my_news}/>  {/* added data attributes in components*/}
-  </div>
-  );
+  <TextInput /> {/*added text input component*/}
+<News data = {this.props.my_news}/> {/* added data attributes in components*/}
+</div>
+
+);
 }
 });
+
 export default App; 
