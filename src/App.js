@@ -15,10 +15,7 @@
     //       }
     //    });
 
-
-
     var Article = React.createClass({
-
       propTypes: {
         data: React.PropTypes.shape({
           author: React.PropTypes.string.isRequired,
@@ -66,7 +63,7 @@ var News = React.createClass({
 
 
   onTotalNewsClick: function(){
-    this.setState({counter: ++this.state.counter });
+    this.setState({counter: ++ this.state.counter });
   },
   
 
@@ -102,7 +99,7 @@ var News = React.createClass({
 var TextInput = React.createClass({
   getInitialState: function() {
     return {
-        myValue: ''
+      myValue: ''
     };
   },
 
@@ -110,11 +107,17 @@ var TextInput = React.createClass({
     this.setState({myValue: event.target.value})
   },
 
+  onBtnClickHandler: function(){
+    alert(this.state.myValue);
+  },
+
   render: function(){
     return(
+    <div>
     <input className='textInput' value={this.state.myValue} onChange={this.onChangeHandler}
-    placeholder = 'enter value' />
- 
+    placeholder = 'enter value' />   
+    <button onClick={this.onBtnClickHandler}>Add News </button>
+    </div>
     );
   }
 });
