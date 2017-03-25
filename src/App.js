@@ -96,7 +96,7 @@ var News = React.createClass({
   }
 });
 
-var TextInput = React.createClass({
+var Add = React.createClass({
   getInitialState: function() {
     return {
       myValue: ''
@@ -107,17 +107,36 @@ var TextInput = React.createClass({
     this.setState({myValue: event.target.value})
   },
 
-  onBtnClickHandler: function(){
-    alert(this.state.myValue);
+  onBtnClickHandler: function(e){
+    alert(this.state.myValue);      
   },
 
   render: function(){
-    return(
-    <div>
-    <input className='textInput' value={this.state.myValue} onChange={this.onChangeHandler}
-    placeholder = 'enter value' />   
-    <button onClick={this.onBtnClickHandler}>Add News </button>
-    </div>
+    return( 
+    <form className = 'add cf'>
+    <input
+    type='text'
+    className='add__author'
+    defaultValue=''
+    placeholder='Your Name'
+    ref='author'
+    />
+    <textarea 
+    className='add__text' 
+    defaultValue='' 
+    placeholder='Add News text' 
+    ref='text'>
+    </textarea>
+    <label className='add__checkrule'>
+    <input type='checkbox' defaultChecked={false} ref='checkrule' />I agree 
+    </label>
+    <button 
+    className='add__btn' 
+    onClick={this.onBtnClickHandler} 
+    ref='alert_button'>
+    Show alert
+    </button> 
+    </form>
     );
   }
 });
@@ -127,7 +146,7 @@ var App = React.createClass({
     return (
     <div className="app">
     <h3>News</h3>
-  <TextInput /> {/*added text input component*/}
+  <Add /> {/*added text input component*/}
 <News data = {this.props.my_news}/> {/* added data attributes in components*/}
 </div>
 
