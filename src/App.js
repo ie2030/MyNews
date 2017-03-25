@@ -1,4 +1,5 @@
   import React from 'react';
+  var ReactDOM = require('react-dom');
 
     // var SelectBox = React.createClass({
     //   render: function(){
@@ -108,7 +109,15 @@ var Add = React.createClass({
   },
 
   onBtnClickHandler: function(e){
-    alert(this.state.myValue);      
+   
+    var author = ReactDOM.findDOMNode(this.refs.author).value;
+    var text = ReactDOM.findDOMNode(this.refs.text).value;
+    alert(author + '\n' + text);
+  },
+
+
+  onCheckRuleClick: function(e) {
+    ReactDOM.findDOMNode(this.refs.alert_button).disabled = !e.target.checked;
   },
 
   render: function(){
@@ -128,12 +137,12 @@ var Add = React.createClass({
     ref='text'>
     </textarea>
     <label className='add__checkrule'>
-    <input type='checkbox' defaultChecked={false} ref='checkrule' />I agree 
+    <input type='checkbox' defaultChecked={false} ref='checkrule' onChange={this.onCheckRuleClick} />I agree 
     </label>
     <button 
     className='add__btn' 
     onClick={this.onBtnClickHandler} 
-    ref='alert_button'>
+    ref='alert_button' >
     Show alert
     </button> 
     </form>
