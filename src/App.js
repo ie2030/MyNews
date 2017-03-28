@@ -16,27 +16,30 @@
     //       }
     //    });
 
-    var Article = React.createClass({
-      propTypes: {
-        data: React.PropTypes.shape({
-          author: React.PropTypes.string.isRequired,
-          text: React.PropTypes.string.isRequired,
-          bigText: React.PropTypes.string.isRequired
-        })
-      },
+//      ==============================ARTICLE==============================
 
-      getInitialState: function() {
-        return {
-          visible: false
-        };
-      },
 
-      readmoreClick: function(event) {
-        event.preventDefault();
-        this.setState({visible: true});
-      },
+var Article = React.createClass({
+  propTypes: {
+    data: React.PropTypes.shape({
+      author: React.PropTypes.string.isRequired,
+      text: React.PropTypes.string.isRequired,
+      bigText: React.PropTypes.string.isRequired
+    })
+  },
 
-      render:function(){
+  getInitialState: function() {
+    return {
+      visible: false
+    };
+  },
+
+  readmoreClick: function(event) {
+    event.preventDefault();
+    this.setState({visible: true});
+  },
+
+  render:function(){
     var author = this.props.data.author,  //  added immutable data  = added props in render 
     text = this.props.data.text,
     bigText = this.props.data.bigText,
@@ -57,17 +60,17 @@
 }
 });
 
+//==============================NEWS==============================//
+
 var News = React.createClass({
   propTypes: {
     data: React.PropTypes.array.isRequired
   },
 
-
   onTotalNewsClick: function(){
     this.setState({counter: ++ this.state.counter });
   },
   
-
   render:function(){
     var data = this.props.data;
     var newsTemplate;
@@ -97,10 +100,15 @@ var News = React.createClass({
   }
 });
 
-var Add = React.createClass({
+//==============================ADD==============================//
+
+var Add = React.createClass({  
   getInitialState: function() {
     return {
-      myValue: ''
+      myValue: '',
+      agreeNotChecked: true,
+      authorIsEmpty: true,
+      textIsEmpty: true
     };
   },
 
@@ -108,8 +116,7 @@ var Add = React.createClass({
     this.setState({myValue: event.target.value})
   },
 
-  onBtnClickHandler: function(e){
-   
+  onBtnClickHandler: function(e){   
     var author = ReactDOM.findDOMNode(this.refs.author).value;
     var text = ReactDOM.findDOMNode(this.refs.text).value;
     alert(author + '\n' + text);
@@ -117,21 +124,42 @@ var Add = React.createClass({
 
 
   onCheckRuleClick: function(e) {
-    ReactDOM.findDOMNode(this.refs.alert_button).disabled = !e.target.checked;
+   this.setState({agreeNotChecked: !this.state.agreeNotChecked});
+  },
+
+  onAuthorChange : function(e){
+    if(e.target.value.trim().length>0){
+      this.setState({authorIsEmpty:false})
+    }else{
+      this.state({authorIsEmpty:true})
+    }
+  },
+
+  onTextChange : function(e){
+    if(e.target.value.trim().length>0){
+      this.setState({textIsEmpty:false})
+    }else{
+      this.state({textIsEmpty:true})
+    }
   },
 
   render: function(){
+    var agreeNotChecked = this.state.agreeNotChecked,
+    authorIsEmpty = this.state.authorIsEmpty,
+    textIsEmpty = this.state.textIsEmpty;
     return( 
     <form className = 'add cf'>
     <input
     type='text'
     className='add__author'
+    onChange={this.onAuthorChange}
     defaultValue=''
     placeholder='Your Name'
     ref='author'
     />
     <textarea 
     className='add__text' 
+    onChange={this.onTextChange}
     defaultValue='' 
     placeholder='Add News text' 
     ref='text'>
@@ -142,6 +170,7 @@ var Add = React.createClass({
     <button 
     className='add__btn' 
     onClick={this.onBtnClickHandler} 
+    disabled={agreeNotChecked || authorIsEmpty || textIsEmpty}
     ref='alert_button' >
     Show alert
     </button> 
@@ -149,6 +178,8 @@ var Add = React.createClass({
     );
   }
 });
+
+//==============================APP==============================//
 
 var App = React.createClass({
   render: function() {
