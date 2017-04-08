@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './index.css';
+import Root from './Root';
+import QueryExample from './QueryExample';
+import './index.css';	
+import {Route, Router, IndexRoute } from 'react-router'
+
+
 
 var my_news = [
 {
@@ -28,7 +33,8 @@ var my_news = [
 ];
 
 
+
 ReactDOM.render(
   <App my_news = {my_news} />,
-  document.getElementById('root')
+     document.getElementById('root')
 );
