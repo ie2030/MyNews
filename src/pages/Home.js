@@ -1,5 +1,6 @@
 import React from 'react';
 import News from '../components/news';
+import Add from '../components/add';
 var ReactDOM = require('react-dom');
 window.ee = new EventEmitter();
 

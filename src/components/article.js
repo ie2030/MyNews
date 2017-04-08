@@ -1,8 +1,4 @@
-import React from 'react';
-var ReactDOM = require('react-dom');
-window.ee = new EventEmitter();
-
-  //      ==============================ARTICLE==============================
+//      ==============================ARTICLE==============================
 import React from 'react';
 var ReactDOM = require('react-dom');
 window.ee = new EventEmitter();
@@ -10,8 +6,8 @@ window.ee = new EventEmitter();
 var Article = React.createClass({
   propTypes: {
     data: React.PropTypes.shape({
-      author: React.PropTypes.string.isRequired,
-      text: React.PropTypes.string.isRequired
+    author: React.PropTypes.string.isRequired,
+    text: React.PropTypes.string.isRequired
     })
   },
   getInitialState: function() {
