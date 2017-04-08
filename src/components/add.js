@@ -3,7 +3,7 @@
 import React from 'react';
 var ReactDOM = require('react-dom');
 window.ee = new EventEmitter();
-
+  
 
 
 var Add = React.createClass({  
@@ -94,3 +94,5 @@ render: function(){
   );
 }
 });
+
+export default Add
