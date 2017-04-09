@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/navigation';
-import './App.css';
+
 
 import Home from './pages/Home';
 import About from './pages/About';

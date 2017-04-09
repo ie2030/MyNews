@@ -28,7 +28,7 @@ var Article = React.createClass({
       render:function(){
       var author = this.props.data.author,  //  added immutable data  = added props in render 
       text = this.props.data.text,
-      bigText = this.props.data.bigText,
+     bigText = this.props.data.bigText,
       visible = this.state.visible;
       return(
         <div className='article'>
@@ -38,7 +38,9 @@ var Article = React.createClass({
       <a href="#" onClick={this.readmoreClick} className={'news__readmore ' + (visible ? 'none': '')}>Details</a>   
     {/*for big text: do not show text if visible === false*/}
     <p className={'news__bigText ' + (visible ? '' : 'none')}>{bigText}</p>  
+    < button onClick={this.deleteArticle} className="btn btn-danger">Delete</button> 
     </div>
+
     )
   }
 });
