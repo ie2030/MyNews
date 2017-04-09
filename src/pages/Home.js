@@ -4,21 +4,6 @@ import Add from '../components/add';
 var ReactDOM = require('react-dom');
 window.ee = new EventEmitter();
 
-// var SelectBox = React.createClass({
-  //   render: function(){
-  //        return (
-  //          <div className="col-md-10">
-  //         <input type="text" placeholder="Search" />
-  //         Sort by:
-  //         <select>
-  //           <option value="name">Alphabetical</option>
-  //           <option value="age">Newest</option>
-  //         </select>
-  //          </div>
-  //         );
-  //       }
-  //    });
-
 //==============================APP==============================//
 /*Default page*/
 
@@ -29,7 +14,7 @@ var Home = React.createClass({
     };
   },
 componentDidMount: function(){
-    var self = this;
+    // var self = this;
     window.ee.addListener('News.add', function(item){
     var nextNews = item.concat(self.state.news);
     self.setState({news: nextNews});

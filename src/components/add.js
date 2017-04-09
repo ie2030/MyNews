@@ -3,8 +3,6 @@
 import React from 'react';
 var ReactDOM = require('react-dom');
 window.ee = new EventEmitter();
-  
-
 
 var Add = React.createClass({  
   getInitialState: function() {
@@ -20,7 +18,6 @@ var Add = React.createClass({
   
   onBtnClickHandler: function(e) {
     e.preventDefault();
-
     var textEl = ReactDOM.findDOMNode(this.refs.text);
     var author = ReactDOM.findDOMNode(this.refs.author).value;
     var text = textEl.value;
