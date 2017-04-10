@@ -15,6 +15,13 @@ var Article = React.createClass({
       visible: false
     };
   },
+
+   deleteArticle: function(event){
+    event.preventDefault();
+    window.ee.emit('News.delete', this.props.data.index);
+  },
+
+
   /*
     Called when user click 'Details' string
   */
