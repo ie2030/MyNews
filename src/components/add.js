@@ -81,11 +81,11 @@ render: function(){
   <input type='checkbox' defaultChecked={false} ref='checkrule' onChange={this.onCheckRuleClick} />I agree 
   </label>
   <button 
-  className='add__btn' 
+  className='add__btn btn btn-success' 
   onClick={this.onBtnClickHandler} 
   disabled={agreeNotChecked || authorIsEmpty || textIsEmpty}
   ref='alert_button' >
-  Add News
+  <span className="glyphicon glyphicon-paperclip"></span>Add News
   </button> 
   </form>
   );

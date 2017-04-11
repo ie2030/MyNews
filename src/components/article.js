@@ -45,7 +45,7 @@ var Article = React.createClass({
       <a href="#" onClick={this.readmoreClick} className={'news__readmore ' + (visible ? 'none': '')}>Details</a>   
     {/*for big text: do not show text if visible === false*/}
     <p className={'news__bigText ' + (visible ? '' : 'none')}>{bigText}</p>  
-    < button onClick={this.deleteArticle} className="btn btn-danger">Delete</button> 
+    < button onClick={this.deleteArticle} className="btn btn-danger"><span className="glyphicon glyphicon-trash"></span>Delete</button> 
     </div>
 
     )

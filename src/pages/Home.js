@@ -49,7 +49,7 @@ componentWillUnmount: function() {
     render: function() {
     return (
     <div className="app">
-  <h3>News</h3>                         
+  <h3><span className="glyphicon glyphicon-globe"></span>News</h3>                         
 {/*added text input component*/}
 <Add /> 
 <News data = {this.state.news} /> 
