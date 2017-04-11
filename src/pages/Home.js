@@ -37,7 +37,29 @@ componentDidMount: function(){
         });
       
     });
-    
+    /*
+      Eventlistener called when user search news
+    */
+    window.ee.addListener('News.search', function(query){
+      var query_string = new RegExp(query, 'i');
+      var searchNews = [];
+      var allNews = self.state.allNews;
+      if(query.length > 0){
+        self.setState({searching: true});
+        for(var i=0; i< allNews.length; i++){
+          if(allNews[i].author.search(query_string) != -1 || allNews[i].text.search(query_string) != -1 || allNews[i].bigText.search(query_string) != -1 ){
+            searchNews.push(allNews[i]);
+          }
+        }
+        self.setState({news: searchNews});
+      }else {
+        var allNews = self.state.allNews;
+        self.setState({
+          searching: false,
+          news: allNews
+        });
+      }
+    });
 
   /*
       Eventlistener called when user click 'Delete' button
