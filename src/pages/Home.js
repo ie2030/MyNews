@@ -1,5 +1,5 @@
 import React from 'react';
-// import Search from '../components/search';
+import Search from '../components/search';
 import News from '../components/news';
 import Add from '../components/add';
 var ReactDOM = require('react-dom');
@@ -12,7 +12,8 @@ var Home = React.createClass({
   getInitialState: function() {
     return {
       news: this.props.my_news,
-      allNews: this.props.my_news
+      allNews: this.props.my_news,
+      searching: false
     };
   },
 componentDidMount: function(){
@@ -26,7 +27,17 @@ componentDidMount: function(){
     var nextNews = item.concat(self.state.news);
     self.setState({news: nextNews});
   });
-  
+
+    window.ee.addListener('News.edit', function(item){
+        var allNews = self.state.news;
+        allNews[item.index] = item;
+        self.setState({
+          news: allNews,
+          allNews: allNews
+        });
+      
+    });
+    
 
   /*
       Eventlistener called when user click 'Delete' button
@@ -42,19 +53,22 @@ componentDidMount: function(){
 },
 
 componentWillUnmount: function() {
-    // window.ee.removeListener('News.search');
     window.ee.removeListener('News.add');
-     window.ee.removeListener('News.delete');
+    window.ee.removeListener('News.delete');
+    window.ee.removeListener('News.search');
+    window.ee.removeListener('News.edit');
   },
     render: function() {
     return (
-    <div className="app">
+  <div className="app">
+  <Search />
   <h3><span className="glyphicon glyphicon-globe"></span>News</h3>                         
 {/*added text input component*/}
 <Add /> 
 <News data = {this.state.news} /> 
 {/* added data attributes in components*/}
 </div>
+
 );
 }
 });

@@ -16,14 +16,17 @@ var Article = React.createClass({
     };
   },
 
+   /*
+    Called when user click 'Delete' button
+  */
+
    deleteArticle: function(event){
     event.preventDefault();
     window.ee.emit('News.delete', this.props.data.index);
   },
 
-
   /*
-    Called when user click 'Details' string
+    Called when user click 'Details' button
   */
   readmoreClick: function(event) {
     event.preventDefault();
@@ -32,6 +35,15 @@ var Article = React.createClass({
   /*
     Render Component
   */
+ editArticle: function(event){
+    event.preventDefault();
+    this.setState({editing: true});
+    ReactDOM.findDOMNode(this.refs.author).focus();
+    ReactDOM.findDOMNode(this.refs.author).value = this.props.data.author;
+    ReactDOM.findDOMNode(this.refs.text).value = this.props.data.text;
+   
+  },
+
       render:function(){
       var author = this.props.data.author,  //  added immutable data  = added props in render 
       text = this.props.data.text,
@@ -45,6 +57,7 @@ var Article = React.createClass({
       <a href="#" onClick={this.readmoreClick} className={'news__readmore ' + (visible ? 'none': '')}>Details</a>   
     {/*for big text: do not show text if visible === false*/}
     <p className={'news__bigText ' + (visible ? '' : 'none')}>{bigText}</p>  
+    <button onClick={this.editArticle} className="btn-first btn btn-primary">Edit</button>
     < button onClick={this.deleteArticle} className="btn btn-danger"><span className="glyphicon glyphicon-trash"></span>Delete</button> 
     </div>
 

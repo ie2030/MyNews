@@ -80,9 +80,15 @@ ul.nav_list li {
 	margin-top: 15px;
 }
 .btn-danger {
-	display: block;
+	display: inline-block;
 	margin: 10px 0px;
+	padding: 5px;
 }
+
+.btn-first {
+display: block;
+}
+
 .glyphicon{
 	margin-right: 10px;
 }
@@ -98,4 +104,11 @@ ul.nav_list li {
 	position: absolute;
 	top: 0px;
 	margin: 5px 10px;
+}
+
+.search {
+position: absolute;
+right:50px;
+top:17px;
+padding-top: 10px;
 }
