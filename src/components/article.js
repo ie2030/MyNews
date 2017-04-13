@@ -32,9 +32,11 @@ var Article = React.createClass({
     event.preventDefault();
     this.setState({visible: true});
   },
-  /*
-    Render Component
+
+ /*
+    Called when user click 'Edit' button
   */
+
  editArticle: function(event){
     event.preventDefault();
     this.setState({editing: true});
@@ -43,6 +45,10 @@ var Article = React.createClass({
     ReactDOM.findDOMNode(this.refs.text).value = this.props.data.text;
    
   },
+
+ /*
+    Render Component
+  */
 
       render:function(){
       var author = this.props.data.author,  //  added immutable data  = added props in render 

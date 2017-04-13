@@ -37,6 +37,21 @@ componentDidMount: function(){
         });
       
     });
+
+     /*
+      Eventlistener called when user update news data
+    */
+
+     window.ee.addListener('News.edit', function(item){
+      if(self.state.searching == false){
+        var allNews = self.state.news;
+        allNews[item.index] = item;
+        self.setState({
+          news: allNews,
+          allNews: allNews
+        });
+      }
+    });
     /*
       Eventlistener called when user search news
     */
