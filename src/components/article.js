@@ -71,4 +71,4 @@ var Article = React.createClass({
   }
 });
 
-export default Article
+export default Article;
