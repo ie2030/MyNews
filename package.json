@@ -1,7 +1,7 @@
 				{
 "name": "newsone",
 "version": "0.0.1",
-"private": true
+"private": true,
 				
 
 "dependencies": {
@@ -21,4 +21,3 @@
 "eslintConfig": {
 "extends": "./node_modules/react-scripts/config/eslint.js"
 				}
-}
